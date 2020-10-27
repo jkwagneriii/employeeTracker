@@ -35,7 +35,10 @@ function init() {
                 "View all employees",
                 "Exit"
             ]
+        }).then(function(response) {
+            //If Else statements for matching the response from the user to the query functions that link to the database.
         })
+};
 
-}
+//Query functions here
 
