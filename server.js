@@ -39,13 +39,24 @@ function init() {
             //If Else statements for matching the response from the user to the query functions that link to the database.
             if(response.command === "View all departments") {
                 console.log('DEPARTMENTS');
-                // viewDepartments();
+                viewDepartments();
+            }
+            else if (response.command === "Exit") {
+                connection.end();
             }
         })
 };
 
 //Query functions here
-function viewDepartments() {
-
-};
+//NOT WORKING!
+// function viewDepartments() {
+//     let query = "SELECT * FROM department";
+//     connection.query(query, function(err, res) {
+//         console.log('DEPARTMENTS:')
+//         res.forEach(function department() {
+//             console.log(`ID: ${department.id}, Name: ${department.name}`)
+//         })
+//         init();
+//     })
+// };
 
