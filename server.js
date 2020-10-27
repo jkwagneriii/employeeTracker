@@ -19,5 +19,24 @@ var connection = mysql.createConnection({
   connection.connect(function(err) {
     if (err) throw err;
     console.log("connected");
+    init();
   });
+
+function init() {
+    //Inquirer
+    inquirer
+        .prompt({
+            name: "command",
+            type: "rawlist",
+            message: "Hello... What would you like to do?",
+            choices: [
+                "View all departments",
+                "View all roles",
+                "View all employees",
+                "Add a department",
+                "Exit"
+            ]
+        })
+
+}
 
