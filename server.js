@@ -33,7 +33,6 @@ function init() {
                 "View all departments",
                 "View all roles",
                 "View all employees",
-                "Add a department",
                 "Exit"
             ]
         })
