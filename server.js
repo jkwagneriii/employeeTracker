@@ -37,8 +37,15 @@ function init() {
             ]
         }).then(function(response) {
             //If Else statements for matching the response from the user to the query functions that link to the database.
+            if(response.command === "View all departments") {
+                console.log('DEPARTMENTS');
+                // viewDepartments();
+            }
         })
 };
 
 //Query functions here
+function viewDepartments() {
+
+};
 
