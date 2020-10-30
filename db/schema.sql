@@ -34,4 +34,6 @@ CREATE TABLE employee (
 SELECT * FROM roles;
 SELECT * FROM department; 
 
+SELECT * FROM employee JOIN roles ON employee.role_id = roles.id; 
+
 

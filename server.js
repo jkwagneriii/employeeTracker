@@ -89,6 +89,7 @@ function addRoles() {
             connection.query(query, [response.roleTitle, response.roleSalary, savedDepartmentId], function(err, result) {
                 if (err) throw err;
             })
+            init();
         })
     })
 }
@@ -160,57 +161,3 @@ function init() {
             }
         })
 };
-
-
-
-
-
-
-
-//Query functions here
-//NOT WORKING!
-// function viewDepartments() {
-//     let query = "SELECT * FROM department";
-//     connection.query(query, function(err, res) {
-//         console.log('DEPARTMENTS:')
-//         res.forEach(function department() {
-//             console.log(`ID: ${department.id} | Name: ${department.name}`)
-//         })
-//         init();
-//     })
-// };
-
-// function viewRoles() {
-//     let query = "SELECT * FROM role";
-//     connection.query(query, function(err, res) {
-//         console.log('ROLES: ')
-//         res.forEach(function role() {
-//             console.log(`ID: ${role.id} | Title: ${role.title} | Salary: ${role.salary} | Department ID: ${role.department_id}`);
-//         })
-//         init();
-//     });
-// };
-
-// function viewEmployees() {
-//     let query = "SELECT * FROM employee";
-//     connection.query(query, function(err, res) {
-//         console.log('EMPLOYEES: ')
-//         res.forEach(function employee() {
-//             console.log(`ID: ${employee.id} | Name: ${employee.first_name} ${employee.last_name} | Role ID: ${employee.role_id} | Manager ID: ${employee.manager_id}`);
-//         })
-//         init();
-//     });
-// };
-
-//I still need at least one adding function. Start with add department. Use inquirer to prompt another input for new department name. Then use an INSERT INTO ? to add the new data into the department table.
-
-// let query = "INSERT INTO department (name) VALUES (?)";
-// function addDepartment() {
-//     inquirer
-//         .prompt({
-//             type: 'input',
-//         })
-//         .then(function(response) {
-
-//         })
-// }
