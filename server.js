@@ -29,9 +29,11 @@ function viewAll() {
         if (err) throw err;
         console.log("\n\n");
         console.table(result);
+        console.log("\n\n");
+        console.log("Press any arrow to return to CLI");
     });
     init();
-    
+    console.clear();
 };  
 
 //VIEW ROLES
@@ -41,8 +43,11 @@ function viewRoles() {
         if (err) throw err;
         console.log("\n\n");
         console.table(result);
+        console.log("\n\n");
+        console.log("Press any arrow to return to CLI");
     });
     init();
+    console.clear();
 }
 
 //VIEW EMPLOYEES
@@ -52,8 +57,11 @@ function viewEmployees() {
         if (err) throw err;
         console.log("\n\n");
         console.table(result);
+        console.log("\n\n");
+        console.log("Press any arrow to return to CLI");
     });
     init();
+    console.clear();
 }
 
 function addDepartment() {
@@ -67,8 +75,10 @@ function addDepartment() {
             let query = `INSERT INTO department (departmentName) VALUES (?)`
             connection.query(query,[response.newDepartment],   function(err, result) {
             console.log("Department Successfully Added!");
+            console.log("Press any arrow to return to CLI");
             })
             init();
+            console.clear();
         })
 }
 
