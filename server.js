@@ -22,14 +22,39 @@ let connection = mysql.createConnection({
     init();
   });
 
+//VIEW ALL DATA 
 function viewAll() {
     let query = `SELECT employee.id, first_name, last_name, title, salary, departmentName, manager_id FROM employee JOIN roles on role_id = roles.id JOIN department ON department_id = department.id`
     connection.query(query, function(err, result) {
         if (err) throw err;
         console.log("\n\n");
         console.table(result);
-    })
-}  
+    });
+    init();
+    
+};  
+
+//VIEW ROLES
+function viewRoles() {
+    let query = `SELECT title, salary, department_id FROM roles`
+    connection.query(query, function (err, result) {
+        if (err) throw err;
+        console.log("\n\n");
+        console.table(result);
+    });
+    init();
+}
+
+//VIEW EMPLOYEES
+function viewEmployees() {
+    let query = `SELECT employee.id, first_name, last_name FROM employee`
+    connection.query(query, function(err, result) {
+        if (err) throw err;
+        console.log("\n\n");
+        console.table(result);
+    });
+    init();
+}
 
 function addDepartment() {
     inquirer
@@ -41,15 +66,15 @@ function addDepartment() {
         .then(function(response) {
             let query = `INSERT INTO department (departmentName) VALUES (?)`
             connection.query(query,[response.newDepartment],   function(err, result) {
-            console.log(err, result);
+            console.log("Department Successfully Added!");
             })
+            init();
         })
 }
 
 function addRoles() {
     let query = `SELECT * FROM department`
     connection.query(query, function(err, result) {
-    console.log(err, result);
 
 
         let newArray = [];
@@ -94,7 +119,7 @@ function addRoles() {
     })
 }
 
-
+//NEW ARRAY HELPER
 function nameArrayHelper(array, key) {
     let newArray = [];
     for (let i = 0; i < array.length; i++) {
@@ -104,6 +129,7 @@ function nameArrayHelper(array, key) {
     return newArray
 }
 
+//UPDATE ROLE ID
 function updateRoleID () {
     let query = `SELECT * FROM roles`
     connection.query(query, function(err, roleResults) {
@@ -147,6 +173,12 @@ function init() {
             //If Else statements for matching the response from the user to the query functions that link to the database.
             if (response.command === "View all departments") {
                 viewAll();
+            }
+            else if (response.command === "View all employees") {
+                viewEmployees();
+            }
+            else if (response.command === "View all roles") {
+                viewRoles();
             }
             else if (response.command === "Add new department") {
                 addDepartment();
